@@ -9,12 +9,12 @@ import axios from "axios";
 import { v4 as uuid } from "uuid";
 import { OrderListResults } from "src/components/order/order-list-results";
 
-function getCustomers() {
+function getOrders() {
 	return axios.get("/dilevry-actions");
 }
 
-const Customers = () => {
-	const [customers, setCustomers] = useState([
+const Orders = () => {
+	const [orders, setOrders] = useState([
 		{
 			id: uuid(),
 			address: {
@@ -32,7 +32,7 @@ const Customers = () => {
 	]);
 
 	useEffect(() => {
-		getCustomers().then((res) => setCustomers(res.data));
+		getOrders().then((res) => setOrders(res.data));
 	}, []);
 
 	return (
@@ -50,13 +50,13 @@ const Customers = () => {
 				<Container maxWidth={false}>
 					<CustomerListToolbar />
 					<Box sx={{ mt: 3 }}>
-						<CustomerListResults customers={customers} />
+						<OrderListResults orders={orders} />
 					</Box>
 				</Container>
 			</Box>
 		</>
 	);
 };
-Customers.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
+Orders.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
-export default Customers;
+export default Orders;

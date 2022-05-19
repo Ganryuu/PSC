@@ -17,9 +17,9 @@ import {
 } from "@mui/material";
 import { getInitials } from "../../utils/get-initials";
 
-export const CustomerListResults = (props) => {
-	const { customers, ...rest } = props;
-	console.log(customers);
+export const OrderListResults = (props) => {
+	const { orders, ...rest } = props;
+	console.log(orders);
 	const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
 	const [limit, setLimit] = useState(10);
 	const [page, setPage] = useState(0);
@@ -28,7 +28,7 @@ export const CustomerListResults = (props) => {
 		let newSelectedCustomerIds;
 
 		if (event.target.checked) {
-			newSelectedCustomerIds = customers.map((customer) => customer.id);
+			newSelectedCustomerIds = orders.map((customer) => customer.id);
 		} else {
 			newSelectedCustomerIds = [];
 		}
@@ -80,11 +80,11 @@ export const CustomerListResults = (props) => {
 							<TableRow>
 								<TableCell padding="checkbox">
 									<Checkbox
-										checked={selectedCustomerIds.length === customers.length}
+										checked={selectedCustomerIds.length === orders.length}
 										color="primary"
 										indeterminate={
 											selectedCustomerIds.length > 0 &&
-											selectedCustomerIds.length < customers.length
+											selectedCustomerIds.length < orders.length
 										}
 										onChange={handleSelectAll}
 									/>
@@ -98,25 +98,25 @@ export const CustomerListResults = (props) => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{customers.slice(0, limit).map((customer) => (
+							{orders.slice(0, limit).map((order) => (
 								<TableRow
 									hover
-									key={customer?.id}
-									selected={selectedCustomerIds.indexOf(customer?.id) !== -1}
+									key={order?.id}
+									selected={selectedCustomerIds.indexOf(order?.id) !== -1}
 								>
 									<TableCell padding="checkbox">
 										<Checkbox
-											checked={selectedCustomerIds.indexOf(customer?.id) !== -1}
-											onChange={(event) => handleSelectOne(event, customer?.id)}
+											checked={selectedCustomerIds.indexOf(order?.id) !== -1}
+											onChange={(event) => handleSelectOne(event, order?.id)}
 											value="true"
 										/>
 									</TableCell>
-									<TableCell>{customer?.title}</TableCell>
-									<TableCell>{customer?.description}</TableCell>
-									<TableCell>{customer?.time}</TableCell>
-									<TableCell>{customer?.type}</TableCell>
-									<TableCell>{customer?.state}</TableCell>
-									<TableCell>{customer?.urgency}</TableCell>
+									<TableCell>{order?.title}</TableCell>
+									<TableCell>{order?.description}</TableCell>
+									<TableCell>{order?.time}</TableCell>
+									<TableCell>{order?.type}</TableCell>
+									<TableCell>{order?.state}</TableCell>
+									<TableCell>{order?.urgency}</TableCell>
 								</TableRow>
 							))}
 						</TableBody>
@@ -125,7 +125,7 @@ export const CustomerListResults = (props) => {
 			</PerfectScrollbar>
 			<TablePagination
 				component="div"
-				count={customers.length}
+				count={orders.length}
 				onPageChange={handlePageChange}
 				onRowsPerPageChange={handleLimitChange}
 				page={page}
@@ -136,6 +136,6 @@ export const CustomerListResults = (props) => {
 	);
 };
 
-CustomerListResults.propTypes = {
+OrderListResults.propTypes = {
 	customers: PropTypes.array.isRequired,
 };
