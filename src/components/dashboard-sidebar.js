@@ -45,6 +45,16 @@ const items = [
 		title: "Products",
 	},
 	{
+		href: "/blood-donations",
+		icon: <ShoppingBagIcon fontSize="small" />,
+		title: "Blood Donations",
+	},
+	{
+		href: "/request-medication",
+		icon: <ShoppingBagIcon fontSize="small" />,
+		title: "Request Medication",
+	},
+	{
 		href: "/account",
 		icon: <UserIcon fontSize="small" />,
 		title: "Account",
