@@ -15,7 +15,7 @@ const center = {
 function MyComponent() {
 	const [state, setState] = useState();
 	return (
-		<LoadScript googleMapsApiKey="AIzaSyD-N4w_YzDDKVUf3pLpB28x1ABFRGyzkgE">
+		<LoadScript googleMapsApiKey={process.env.GOOGLE_API_KEY}>
 			<GoogleMap
 				mapContainerStyle={containerStyle}
 				center={center}
